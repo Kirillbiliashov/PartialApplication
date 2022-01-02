@@ -11,14 +11,14 @@ const checkPin = (...code) => code.join('') === EXPECTED_PIN;
 // For hint use https://github.com/HowProgrammingWorks/Cheatsheet
 const press = (arg) => {
     let fn = checkPin.bind(null, arg);
-   let i = 1;
-   return {
-       press: function(par) {
-         fn = fn.bind(null, par);
-          return ++i === 4 ? fn() : this;
+    let i = 1;
+    return {
+        press: par => {
+            fn = fn.bind(null, par);
+            return ++i === 4 ? fn() : this;
 
-       }
-   }
+        }
+    }
 };
 
 module.exports = { press };
